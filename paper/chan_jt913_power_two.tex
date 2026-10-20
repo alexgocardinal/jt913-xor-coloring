@@ -1,0 +1,106 @@
+\pdfoutput=1
+\pdfmapfile{+cm.map}
+\pdfmapfile{+symbols.map}
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A Catalan clique partition of middle Johnson graphs at powers of two},pdfauthor={Alex Chan},pdfkeywords={generalized Kneser graph, Johnson graph, clique partition, Catalan number, binary syndrome}}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\calC}{\mathcal C}
+\newcommand{\calF}{\mathcal F}
+\newcommand{\sig}{\sigma}
+\newtheorem{theorem}{Theorem}
+
+\title[A Catalan partition of middle Johnson graphs]{A Catalan clique partition of middle Johnson graphs at powers of two}
+\author{Alex Chan}
+\address{Harvard University and National Bureau of Economic Research}
+\email{achan@hbs.edu}
+
+\begin{document}
+\begin{abstract}
+For every power of two $k\geq2$, we partition the vertices of the middle Johnson graph $J(2k,k)$ into cliques of size $k+1$.  Consequently its vertex clique-covering number, or equivalently the chromatic number of the complementary generalized Kneser graph, is the $k$th Catalan number.  A single binary-syndrome rule gives the partition and a matching clique bound proves optimality.  This establishes one infinite family within Jensen--Toft Problem 9.13; it does not determine the chromatic numbers for general parameters.  The result supplies the numerical consequence of a recent conjecture concerning constant-weight lexicodes, without making a claim about the lexicodes themselves.
+\end{abstract}
+\maketitle
+\noindent\textbf{Keywords.} Generalized Kneser graph; Johnson graph; clique partition; Catalan number; binary syndrome.
+
+\section{Statement and context}
+For $0<t<k<n$, the generalized Kneser graph $K(n,k,t)$ has the $k$-subsets of an $n$-element set as its vertices; distinct sets are adjacent when their intersection has size less than $t$.  Jensen and Toft ask for its chromatic number in Problem 9.13 of \cite{JT}.  The Johnson graph $J(n,k)$ has the same vertices, with adjacency when the intersection has size $k-1$.  In particular,
+\begin{equation}\label{eq:complement}
+ K(n,k,k-1)=\overline{J(n,k)},
+ \qquad \chi(K(n,k,k-1))=\theta(J(n,k)),
+\end{equation}
+where $\theta$ is the minimum number of vertex cliques needed to cover a graph.
+
+Write $C_k=\frac{1}{k+1}\binom{2k}{k}$ for the $k$th Catalan number.  J\o rgensen \cite{Jorgensen} established $\theta(J(2k,k))=C_k$ for $k=1,2,4,6,8,16$ and proposed a lexicode property for powers of two whose conclusion includes this equality.  The construction below proves the equality for the entire power-of-two family.  It does not assert that the lexicode has the proposed form, or address other values of $k$.  The first case beyond those values is $k=32$, for which the formula gives $\chi(K(64,32,31))=C_{32}=55{,}534{,}064{,}877{,}048{,}198$.
+
+\begin{theorem}\label{thm:main}
+For every integer $r\geq1$ and $k=2^r$,
+\[
+ \chi\bigl(K(2k,k,k-1)\bigr)
+ =\theta\bigl(J(2k,k)\bigr)
+ =\frac{1}{k+1}\binom{2k}{k}=C_k.
+\]
+An optimal coloring and an optimal clique partition are given explicitly by \eqref{eq:color} below.
+\end{theorem}
+
+\section{Syndrome partition and optimality}
+Put $m=r+1$ and label the $2k=2^m$ ground elements by the vectors of $X=\F_2^m$.  For a subset $A\subseteq X$, define its syndrome by
+\[
+ \sig(A)=\bigoplus_{a\in A}a\in X.
+\]
+Since the ground elements are labeled by \emph{all} vectors of $X$, the vector $\sig(A)$ also names a unique ground element.  For every $k$-subset $S$ set
+\begin{equation}\label{eq:color}
+                 c(S)=S\mathbin{\triangle}\{\sig(S)\}.
+\end{equation}
+This is the color assigned to $S$; as a Johnson-graph construction, it is the center of the clique containing $S$.  It has size $k-1$ or $k+1$, and $\sig(c(S))=0$.
+
+For any zero-syndrome set $T$ of either of those sizes, let
+\[
+ \calF_T=\{S\subseteq X: |S|=k,\ |S\mathbin{\triangle}T|=1\}.
+\]
+If $S\in\calF_T$ and $S\mathbin{\triangle}T=\{x\}$, then
+$\sig(S)=\sig(T)\oplus x=x$.  Thus $c(S)=T$.  Conversely, every $k$-set $S$ belongs to $\calF_{c(S)}$.  The nonempty $\calF_T$ are therefore \emph{exactly} the fibers of $c$ and partition all $\binom{2k}{k}$ vertices.
+
+If $|T|=k-1$, the fiber consists of all $k$-sets containing $T$, and has $|X\setminus T|=k+1$ members.  If $|T|=k+1$, it consists of all $k$-sets contained in $T$, and again has $k+1$ members.  In either case, every pair of distinct members intersects in $k-1$ elements.  Thus every fiber is a clique of $J(2k,k)$ and an independent color class of $K(2k,k,k-1)$.  This gives
+\begin{equation}\label{eq:upper}
+ \theta(J(2k,k))=\chi(K(2k,k,k-1))\leq\frac{1}{k+1}\binom{2k}{k}.
+\end{equation}
+
+For completeness, no clique of $J(2k,k)$ has more than $k+1$ vertices.  Indeed, choose distinct members $A=R\cup\{a\}$ and $B=R\cup\{b\}$ of a clique, where $|R|=k-1$.  Every other member containing $R$ lies in the star
+$\{R\cup\{x\}:x\in X\setminus R\}$.  Every member $D$ not containing $R$ must intersect both $A$ and $B$ in $k-1$ elements, and hence has the form
+$D=(R\setminus\{z\})\cup\{a,b\}$ for some $z\in R$.  If such a $D$ exists, a member $R\cup\{x\}$ of the clique must have $x\in\{a,b\}$, since otherwise its intersection with $D$ has size $k-2$.  The entire clique then lies in the top $\{(R\cup\{a,b\})\setminus\{x\}:x\in R\cup\{a,b\}\}$.  A clique of at most one member satisfies the bound as well.  Both the star and the top have $k+1$ members.  Thus any clique cover needs at least $\binom{2k}{k}/(k+1)$ cliques; by \eqref{eq:complement} the same is a lower bound on the number of colors.  Together with \eqref{eq:upper}, this proves Theorem~\ref{thm:main}.\qed
+
+\section{The centers as a constant-weight code}
+The zero-syndrome $(k-1)$-subsets form a code
+\[
+ \calC=\{T\subseteq X:|T|=k-1,\ \sig(T)=0\}.
+\]
+It has $C_k/2$ members.  Indeed $k-1$ is odd, so translation by $v\in X$ takes the syndrome of $T$ to $\sig(T)\oplus v$.  All $2k$ syndrome classes have equal size, and hence
+\[
+ |\calC|=\frac{1}{2k}\binom{2k}{k-1}
+ =\frac{1}{2}C_k.
+\]
+Two distinct members of $\calC$ cannot differ by one exchange: the two exchanged elements would have equal labels.  They also cannot be disjoint.  For the latter assertion, $\bigoplus_{x\in X}x=0$ since $m\geq2$; if disjoint $T,U\in\calC$ left exactly two elements $a,b$ outside $T\cup U$, then $a\oplus b=0$, contrary to $a\ne b$.  Complements of the members of $\calC$ are precisely the zero-syndrome $(k+1)$-subsets.  Consequently the partition above has $C_k/2$ stars and $C_k/2$ tops, paired by complementation.
+
+More explicitly, the cover contains the star with center $T$ if and only if it contains the top with center $X\setminus T$.  Thus it has the complement symmetry considered in \cite[Remark~4.17]{Jorgensen} for each power-of-two case in Theorem~\ref{thm:main}.
+
+The minimum-distance and intersection properties of $\calC$ explain its relation to the code-based method of \cite{Jorgensen}.  The proof here uses the explicit syndrome class, and does not identify it with any lexicographically greedy code.  It proves the stated special family of Jensen--Toft 9.13, while the problem for unrestricted $(n,k,t)$ remains outside its scope.
+
+\section*{Data and code availability}
+No datasets were used.  A Python graph generator and a finite witness for $K(8,4,3)$ are supplied as supplementary files.  The proof does not rely on these computations.
+
+\begin{thebibliography}{2}
+\bibitem{JT}
+T.~R. Jensen and B. Toft,
+\emph{Graph Coloring Problems},
+John Wiley \& Sons, New York, 1995, Problem 9.13, pp.~161--162.
+\href{https://doi.org/10.1002/9781118032497}{doi:10.1002/9781118032497}.
+
+\bibitem{Jorgensen}
+S.~F. J\o rgensen,
+On the clique covering numbers of Johnson graphs,
+\emph{Designs, Codes and Cryptography} \textbf{93} (2025), 3689--3705.
+\href{https://doi.org/10.1007/s10623-025-01663-3}{doi:10.1007/s10623-025-01663-3}.
+\end{thebibliography}
+\end{document}

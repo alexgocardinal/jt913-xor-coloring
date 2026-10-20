@@ -1,0 +1,11 @@
+name = "jt913"
+version = "0.1.0"
+defaultTargets = ["JT913"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.0"
+
+[[lean_lib]]
+name = "JT913"
