@@ -1,6 +1,4 @@
 \pdfoutput=1
-\pdfmapfile{+cm.map}
-\pdfmapfile{+symbols.map}
 \documentclass[11pt]{amsart}
 \usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
@@ -88,7 +86,16 @@ More explicitly, the cover contains the star with center $T$ if and only if it c
 The minimum-distance and intersection properties of $\calC$ explain its relation to the code-based method of \cite{Jorgensen}.  The proof here uses the explicit syndrome class, and does not identify it with any lexicographically greedy code.  It proves the stated special family of Jensen--Toft 9.13, while the problem for unrestricted $(n,k,t)$ remains outside its scope.
 
 \section*{Data and code availability}
-No datasets were used.  A Python graph generator and a finite witness for $K(8,4,3)$ are supplied as supplementary files.  The proof does not rely on these computations.
+The chromatic-number formula in Theorem~\ref{thm:main} has also been
+formally verified in Lean~4 with mathlib.\footnote{The formalization
+includes the XOR coloring, fiber sizes, independent-set bound, exact
+chromatic number, and transfer to the conventional ground labels.
+The Johnson-graph reformulation and the supplementary constant-weight-code
+properties in Section~3 are not separately formalized.}
+The Lean source, pinned dependencies, Python graph generator, and finite
+witness for $K(8,4,3)$ are available at
+\url{https://github.com/alexgocardinal/jt913-xor-coloring}.
+The mathematical proof above does not rely on the finite computations.
 
 \begin{thebibliography}{2}
 \bibitem{JT}

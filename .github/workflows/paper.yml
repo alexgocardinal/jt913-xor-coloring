@@ -1,0 +1,28 @@
+name: Build paper PDF
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended
+      - name: Compile paper
+        working-directory: paper
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error chan_jt913_power_two.tex
+          pdflatex -interaction=nonstopmode -halt-on-error chan_jt913_power_two.tex
+      - uses: actions/upload-artifact@v4
+        with:
+          name: revised-paper
+          path: |
+            paper/chan_jt913_power_two.pdf
+            paper/chan_jt913_power_two.tex
+          if-no-files-found: error
