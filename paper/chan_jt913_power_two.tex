@@ -1,25 +1,37 @@
-\pdfoutput=1
-\documentclass[11pt]{amsart}
-\usepackage{amsmath,amssymb}
-\usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={A Catalan clique partition of middle Johnson graphs at powers of two},pdfauthor={Alex Chan},pdfkeywords={generalized Kneser graph, Johnson graph, clique partition, Catalan number, binary syndrome}}
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,array}
+\usepackage{alltt}
+\usepackage{needspace}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={A Catalan clique partition of middle Johnson graphs at powers of two},
+  pdfauthor={Alex Chan}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\out}{N^{+}}
+\setlength{\emergencystretch}{1em}
 
 \newcommand{\F}{\mathbb F}
 \newcommand{\calC}{\mathcal C}
 \newcommand{\calF}{\mathcal F}
 \newcommand{\sig}{\sigma}
-\newtheorem{theorem}{Theorem}
 
-\title[A Catalan partition of middle Johnson graphs]{A Catalan clique partition of middle Johnson graphs at powers of two}
-\author{Alex Chan}
-\address{Harvard University and National Bureau of Economic Research}
-\email{achan@hbs.edu}
+\title{A Catalan clique partition of middle Johnson graphs at powers of two}
+\author{Alex Chan\\[2pt]
+  \small Harvard University and National Bureau of Economic Research\\[-1pt]
+  \small \texttt{achan@hbs.edu}}
+\date{\today}
 
 \begin{document}
+\maketitle
+
 \begin{abstract}
 For every power of two $k\geq2$, we partition the vertices of the middle Johnson graph $J(2k,k)$ into cliques of size $k+1$.  Consequently its vertex clique-covering number, or equivalently the chromatic number of the complementary generalized Kneser graph, is the $k$th Catalan number.  A single binary-syndrome rule gives the partition and a matching clique bound proves optimality.  This establishes one infinite family within Jensen--Toft Problem 9.13; it does not determine the chromatic numbers for general parameters.  The result supplies the numerical consequence of a recent conjecture concerning constant-weight lexicodes, without making a claim about the lexicodes themselves.
 \end{abstract}
-\maketitle
+
 \noindent\textbf{Keywords.} Generalized Kneser graph; Johnson graph; clique partition; Catalan number; binary syndrome.
 
 \section{Statement and context}
